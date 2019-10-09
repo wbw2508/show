@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/*
+大多数情况下，一般在文件的最外层（不在嵌套规则内）使用 @import，
+其实，也可以将 @import 嵌套进 CSS 样式或者 @media 中，
+与平时的用法效果相同，只是这样导入的样式只能出现在嵌套的层中。*/
+.sidebar { width: 300px; height: 10px; background-color: blue; }
+@media screen and (orientation: landscape) { .sidebar { width: 500px; } }
+
+.sidebar1 { height: 10px; width: 300px; background-color: green; }
+
+@media screen and (orientation: landscape) { .sidebar1 { width: 500px; } }
+
+.sidebar2 { width: 300px; height: 500px; background: url("../static/temp.jpg") no-repeat 100%/100%; }
+
+@media screen and (-webkit-min-device-pixel-ratio: 1.5) { .sidebar2 { width: 500px; } }
+.error { border: 1px #f00; background-color: #fdd; }
+
+.seriousError { border-width: 3px; }
+
+/*麻烦的是，这样做必须时刻记住使用 .seriousError 时需要参考 .error 的样式，
+带来了很多不变：智能比如加重维护负担，导致 bug，或者给 HTML
+添加无语意的样式。使用 @extend 可以避免上述情况，*/
+.error1, .seriousError1 { border: 1px #f00; background-color: #fdd; }
+
+.seriousError1 { border-width: 3px; }
+
+/*Class 选择器并不是唯一可以被延伸 (extend) 的，Sass 允许延伸任何定义
+给单个元素的选择器，比如 .special.cool，a:hover 或者 a.user[href^="http://"]
+等，例如：*/
+/*同 class 元素一样，a:hover 的样式将继承给 .hoverlink。*/
+a:hover, .hoverLink, #fake-links .link:hover { text-decoration: underline; color: red; }
+
+.commit a.user:hover, .commit .user.hoverLink, .commit #fake-links .user.link:hover, #fake-links .commit .user.link:hover { font-weight: bold; }
+
+/*多重延伸*/
+.error2, .seriousError2, .criticalError { border: 1px #f00; background-color: #fdd; }
+
+.attention, .seriousError2, .criticalError { font-size: 3em; background-color: #ff0; }
+
+.seriousError2, .criticalError { border-width: 3px; }
+
+/* 继续延伸 (Chaining Extends)*/
+.criticalError { position: fixed; top: 10%; bottom: 10%; left: 10%; right: 10%; z-index: -1; }
+
+/*暂时不可以将选择器列 (Selector Sequences)，比如 .foo .bar 或 .foo + .bar，
+延伸给其他元素，但是，却可以将其他元素延伸给选择器列：*/
+/*@extend-Only 选择器 (@extend-Only Selectors)*/
+#context #fake-links .link.notice, #fake-links #context .link.notice, #context a.notice { color: blue; font-weight: bold; font-size: 2em; }
+
+.borderRadius { width: 100px; height: 100px; background-color: red; border-radius: 10px 5px 3px 1px; }
+
+/*# sourceMappingURL=index.css.map */

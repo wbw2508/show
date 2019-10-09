@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/*报错：Error: Invalid GBK character "\xE9"*/
+/*原因：因为scss文件里有中文，编译时会有乱码。
+解决方法：在scss文件第一行添加@charset “UTF-8”;*/
+.notice { background-color: green; border: 2px solid #00aa00; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+
+/*# sourceMappingURL=数据类型.css.map*/

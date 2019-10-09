@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/*
+数字，1, 2, 13, 10px
+字符串，有引号字符串与无引号字符串，"foo", 'bar', baz
+颜色，blue, #04a3f9, rgba(255,0,0,0.5)
+布尔型，true, false
+空值，null
+数组 (list)，用空格或逗号作分隔符，1.5em 1em 0 2em, Helvetica, Arial, sans-serif
+maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)*/
+body.firefox .header:before { content: "Hi,Firefox users!"; }
+
+/*2数组（List）
+官方暂时没有使用案例，
+但 Sass list functions 赋予了数组更多新功能：nth 函数可以直接访问数组中的某一项；
+join 函数可以将多个数组连接在一起；
+append 函数可以在数组中添加新值；
+而 @each 指令能够遍历数组中的每一项。
+这个以后再加
+*/
+/*3.Maps*/
+/*4.Colors*/
+/*运算（Operations）*/
+.p0 { width: 1.1111111111in; }
+
+/*编译为：
+p { width: 1.111in; }
+*/
+.p1 { font: 10px/8px; width: 500px; width: 1; height: 250px; margin-left: 9px; }
+
+.pColor { color: #050709; }
+
+.pColor2 { color: #020406; }
+
+.pColor3 { color: rgba(255, 255, 0, 0.75); }
+
+.pStr1 { cursor: e-resize; margin: 7px auto; }
+
+/*
+编译为：
+.pStr{ cursor: e-resize;
+}
+*/
+.pStr1:before { content: "FooBar"; font-family: sans-serif; }
+
+.pStr1:after { content: "I ate 15 pies!"; }
+
+.pStr2:before { content: "I ate  pies!"; }
+
+.pStr3 { width: 7em; height: 10px; background-color: red; }
+
+.pStr4 { color: red; }
+
+.pStr5 { color: red; }
+
+/*# sourceMappingURL=index.css.map */

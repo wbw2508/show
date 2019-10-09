@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/*@at-root指令使一个或多个规则在文档的根上发出，
+而不是嵌套在它们的父选择器下面。它可以与一个内联选择器一起使用:*/
+.parent { color: red; }
+.child { font-size: 20px; }
+.child1 { color: blue; }
+
+.child2 { color: green; }
+
+/*默认情况下，@at-root只排除选择器。但是，
+也可以使用@at-root来移动嵌套指令，比如@media。例如:*/
+@media print { .page { width: 8in; } }
+.page { color: red; }
+
+/*# sourceMappingURL=at-root.css.map */

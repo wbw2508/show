@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/*通过@mixin混合器实现大段样式的重用
+0.何时使用混合器*/
+.notice { background-color: green; border: 2px solid #00aa00; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+
+/*1.混合器中的css规则*/
+ul.plain { color: #444; list-style: none; }
+ul.plain li { list-style-image: none; list-style-type: none; margin-left: 0px; }
+
+/*2.给混合器传参*/
+/*可以设置默认值*/
+.a1 { color: blue; }
+.a1:visited { color: green; }
+.a1:hover { color: red; }
+
+/*允许$name:value的形式指定每个参数的值*/
+.a2 { color: blue; }
+.a2:visited { color: grenn; }
+.a2:hover { color: red; }
+
+.a3 { color: red; }
+.a3:hover { color: red; }
+.a3:visited { color: red; }
+
+/*# sourceMappingURL=数据类型.css.map*/

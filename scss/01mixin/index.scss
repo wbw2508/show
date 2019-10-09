@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/*通过@mixin混合器实现大段样式的重用
+0.何时使用混合器*/
+@mixin rounded-corners {
+  -moz-border-radius:  5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.notice {
+  background-color: green;
+  border:  2px solid #00aa00;
+  @include  rounded-corners;
+}
+/*1.混合器中的css规则*/
+@mixin  no-bullets{
+    list-style: none;
+  li{
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0px;
+  }
+}
+ul.plain{
+  color: #444;
+  @include no-bullets;
+}
+/*2.给混合器传参*/
+@mixin link-colors($normal, $hover, $visited){
+  color: $normal;
+  &:visited{ color: $visited; }
+  &:hover{ color: $hover; }
+}
+/*可以设置默认值*/
+@mixin link-colors-default(
+  $normal,
+  $hover:$normal,
+  $visited:$normal
+)
+{
+  color: $normal;
+  &:hover{ color :$hover}
+  &:visited{ color :$visited}
+}
+
+.a1{
+  @include link-colors(blue,red,green);
+}
+/*允许$name:value的形式指定每个参数的值*/
+.a2{
+  @include link-colors(
+    $normal:blue,
+    $visited:grenn,
+    $hover:red
+  )
+}
+.a3{
+  @include link-colors-default(red);
+}
+

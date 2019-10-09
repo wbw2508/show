@@ -1,0 +1,117 @@
+@charset "UTF-8";
+/*
+数字，1, 2, 13, 10px
+字符串，有引号字符串与无引号字符串，"foo", 'bar', baz
+颜色，blue, #04a3f9, rgba(255,0,0,0.5)
+布尔型，true, false
+空值，null
+数组 (list)，用空格或逗号作分隔符，1.5em 1em 0 2em, Helvetica, Arial, sans-serif
+maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)*/
+
+//1.字符串
+//SassScript 支持 CSS 的两种字符串类型：有引号字符串 (quoted strings)，
+//如 "xxx" 'xxx'；
+//与无引号字符串 (unquoted strings)，如 sans-serif bold，
+//在编译 CSS 文件时不会改变其类型。
+//只有一种情况例外，使用 #{} (interpolation) 时，
+//有引号字符串将被编译为无引号字符串，
+//这样便于在 mixin 中引用选择器名
+@mixin firefox-message($selector) {
+  body.firefox #{$selector}:before {
+    content: "Hi,Firefox users!";
+  }
+}
+@include firefox-message(".header");
+//编译为：
+// body.firefox .header:before {
+//  content: "Hi, Firefox users!"; }
+
+/*2数组（List）
+官方暂时没有使用案例，
+但 Sass list functions 赋予了数组更多新功能：nth 函数可以直接访问数组中的某一项；
+join 函数可以将多个数组连接在一起；
+append 函数可以在数组中添加新值；
+而 @each 指令能够遍历数组中的每一项。
+这个以后再加
+*/
+/*3.Maps*/
+/*4.Colors*/
+
+/*运算（Operations）*/
+// 1in = 2.54cm = 25.4 mm = 101.6q = 72pt = 6pc = 96px
+.p0{
+  width: 1in + 8pt;
+}
+/*编译为：
+p { width: 1.111in; }
+*/
+// 一个不错的css字典/手册  ：http://caibaojian.com/css3/
+//除法
+// 以下三种情况 / 将被视为除法运算符号：
+//如果值，或值的一部分，是变量或者函数的返回值
+//如果值被圆括号包裹
+//如果值是算数表达式的一部分
+.p1{
+  font:10px/8px;
+  $width:1000px;
+  width: $width/2;
+  width: round(1.5)/2;  //四舍五入/2  1 但是没单位 加上单位round(1.5px)/2 宽度就是1了
+  height: (500px/2);
+  margin-left: 5px + 8px/2px;
+}
+
+//颜色值运算（color Operation）
+
+.pColor {
+  color: #010203 + #040506;
+}
+.pColor2{
+  color: #010203 * 2;
+}
+.pColor3{
+  color: rgba(255,0,0,0.75) + rgba(0,255,0,0.75);
+}
+//字符串运算（String Operations）
+.pStr1{
+  cursor: e + -resize;
+  margin: 3px + 4px auto;
+}
+/*
+编译为：
+.pStr{
+  cursor: e-resize;
+}
+*/
+.pStr1:before{
+  content: "Foo" + Bar;
+  font-family: sans- + "serif";
+}
+.pStr1:after{
+  content: "I ate #{5+10} pies!";
+}
+$value:null;
+.pStr2:before{
+  content: "I ate #{$value} pies!";
+}
+//布尔值(Boolean Operations)
+//SassScript 支持布尔型的 and or 以及 not 运算。
+//数组运算 (List Operations)
+//数组不支持任何运算方式，只能使用 list functions 控制。
+
+//圆括号(Parentheses)
+.pStr3{
+  width: 1em + (2em *3);
+  height: 10px;
+  background-color: red;
+}
+//函数(Function)
+.pStr4{
+  color: hsl(0,100%,50%);
+}
+//关键词参数 (Keyword Arguments)
+//Sass 函数允许使用关键词参数 (keyword arguments)，上面的例子也可以写成：
+.pStr5{
+  color: hsl($hue:0,$saturation:100%,$lightness:50%);
+}
+
+

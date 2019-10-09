@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/*判断父选择器是否存在*/
+/*目前不知道什么情况下父选择器不存在 (ノ=Д=)ノ┻━┻*/
+@mixin does-parent-exist{
+  @if & {
+    &:hover{
+      color: red;
+    }
+  } @else {
+    a {
+      color: red;
+    }
+  }
+}
+.foo.bar .baz.bang, .bip.qux {
+  $selector: &;
+  @include does-parent-exist;
+  #{$selector} a{
+    color: blue;
+  @include does-parent-exist;
+  }
+}
+

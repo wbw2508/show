@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>配置scss环境</title>
+    <!--
+    官方文档：https://www.sass.hk/
+    环境：公司电脑 win7系统  webstorm编译器
+    按照官方的教程先去下载了ruby，由于比较穷，国内下载ruby很慢，所以选择百度云下载，
+    （Ruby安装演示）地址：https://blog.csdn.net/qq_38161040/article/details/84205367
+        然后傻瓜式安装 Ruby  我勾选了选择utf-8编码，然后不安装他的编译器
+        ruby -v查看是否安装成功
+        gem install sass 安装sass
+        WebStorm配置scss环境教程   网址：https://blog.csdn.net/wytbr666/article/details/77477182
+        实例：在vue中使用scss  网站：https://www.jianshu.com/p/0b604429b0d5
+        注意：引入文件的时候引入scss编译好后的css文件即可
+        特别注意scss文件不能放在中文命名的文件夹下面，要不然会报错.
+        自身命名可以中文 但是不推荐
+        Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8
+        Use --trace for backtrace.
+
+    -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+        <div>
+            aaa
+            <span>bbb</span>
+        </div>
+        <div class="notice">
+            12313123
+        </div>
+</body>
+</html>

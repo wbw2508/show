@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+$name:foo;
+$attr:border;
+p.#{$name}{
+  width: 100px;
+  height: 100px;
+  #{$attr}-width:1px;
+  #{$attr}-style:solid;
+  #{$attr}-color:blue;
+}
+p{
+  $font-size:12px;
+  $line-height:30px;
+  font:12px/.20px ‘宋体’;
+  //font:#{$font-size}/#{$line-height};
+}

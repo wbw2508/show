@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+//一般写法：
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  border-width: 3px;
+}
+/*麻烦的是，这样做必须时刻记住使用 .seriousError 时需要参考 .error 的样式，
+带来了很多不变：智能比如加重维护负担，导致 bug，或者给 HTML
+添加无语意的样式。使用 @extend 可以避免上述情况，*/
+
+.error1{
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError1{
+  @extend .error1;
+  border-width: 3px;
+}
+/*Class 选择器并不是唯一可以被延伸 (extend) 的，Sass 允许延伸任何定义
+给单个元素的选择器，比如 .special.cool，a:hover 或者 a.user[href^="http://"]
+等，例如：*/
+
+/*同 class 元素一样，a:hover 的样式将继承给 .hoverlink。*/
+.hoverLink{
+  @extend a:hover
+}
+a:hover{
+  text-decoration: underline;
+  color: red;
+}
+
+.commit a.user:hover{
+  font-weight: bold;
+}
+/*多重延伸*/
+.error2{
+  border:1px #f00;
+  background-color: #fdd;
+}
+.attention{
+  font-size: 3em;
+  background-color: #ff0;
+}
+.seriousError2{
+  @extend  .error2;
+  @extend .attention;
+  border-width: 3px;
+}
+/* 继续延伸 (Chaining Extends)*/
+.criticalError{
+  @extend .seriousError2;
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  z-index: -1;
+}
+//选择器列 (Selector Sequences)
+/*暂时不可以将选择器列 (Selector Sequences)，比如 .foo .bar 或 .foo + .bar，
+延伸给其他元素，但是，却可以将其他元素延伸给选择器列：*/
+#fake-links .link {
+  @extend a;
+}
+/*@extend-Only 选择器 (@extend-Only Selectors)*/
+#context a%extreme{
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}
+.notice{
+    @extend %extreme;
+}
+

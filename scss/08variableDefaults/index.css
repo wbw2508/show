@@ -1,0 +1,5 @@
+#main:before { content: "First content"; new-content: "First time reference"; }
+
+#main1:before { content: "Non-null content"; }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+$content:"First content";
+$contet:"Second content?" !default;
+$new_content:"First time reference" !default;
+
+#main:before {
+  content:$content;
+  new-content:$new_content;
+}
+
+$content1:null;
+$content1:"Non-null content" !default;
+//变量是null空值时将被视为未赋值，被!default赋值
+#main1:before{
+  content: $content1;
+}

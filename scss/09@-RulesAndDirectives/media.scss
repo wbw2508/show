@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.sidebar{
+  width: 300px;
+  height: 10px;
+  background-color: blue;
+  @media screen and (orientation: landscape){
+    width: 500px;
+  }
+}
+//@media 的 queries 允许互相嵌套使用，编译时，Sass 自动添加 and
+.sidebar1 {
+  height: 10px;
+  width:300px;
+  background-color: green;
+}
+@media screen {
+  .sidebar1 {
+    @media (orientation: landscape) {
+      width: 500px;
+    }
+  }
+}
+//@media 甚至可以使用 SassScript（比如变量，函数，以及运算符）
+// 代替条件的名称或者值：
+
+$media:screen;
+//分辨率 图片的放大缩小 此处为1.5倍
+$feature:-webkit-min-device-pixel-ratio;
+$value:1.5;
+
+.sidebar2{
+  width: 300px;
+  height: 500px;
+  background: url("../static/temp.jpg") no-repeat 100%/100%;
+}
+@media #{$media} and ($feature:$value) {
+  .sidebar2{
+    width: 500px;
+  }
+}
+
+

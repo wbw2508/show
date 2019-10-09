@@ -1,0 +1,9 @@
+@charset "UTF-8";
+@mixin my-border-radius(
+  $top-left ,
+  $top-right  : $top-left ,
+  $bottom-right : $top-left ,
+  $bottom-left : $top-right)
+{
+        border-radius: $top-left $top-right $bottom-right $bottom-left;
+}

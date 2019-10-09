@@ -1,0 +1,8 @@
+@charset "UTF-8";
+/*判断父选择器是否存在*/
+/*目前不知道什么情况下父选择器不存在 (ノ=Д=)ノ┻━┻*/
+.foo.bar .baz.bang:hover, .bip.qux:hover { color: red; }
+.foo.bar .baz.bang .foo.bar .baz.bang, .foo.bar .baz.bang .bip.qux a, .bip.qux .foo.bar .baz.bang, .bip.qux .bip.qux a { color: blue; }
+.foo.bar .baz.bang .foo.bar .baz.bang:hover, .foo.bar .baz.bang .bip.qux a:hover, .bip.qux .foo.bar .baz.bang:hover, .bip.qux .bip.qux a:hover { color: red; }
+
+/*# sourceMappingURL=index.css.map */
